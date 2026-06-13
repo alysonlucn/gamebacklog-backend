@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { CreateExampleDto } from "../dtos/create-example-dto";
 import { CreateExampleService } from "../services/create-example-service";
 import { ListExamplesService } from "../services/list-examples-service";
 
@@ -8,9 +7,7 @@ export class ExampleController {
     const createExampleService = new CreateExampleService();
 
     try {
-      const example = await createExampleService.execute(
-        request.body as CreateExampleDto,
-      );
+      const example = await createExampleService.execute(request.body);
       return response.status(201).json(example);
     } catch (error: any) {
       return response.status(400).json({ error: error.message });
