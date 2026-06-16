@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import exampleRoutes from "./modules/example/routes/example-routes";
+import authRoutes from "./modules/users/routes/auth-routes";
 
 export function createApp() {
   const app = express();
@@ -11,6 +12,7 @@ export function createApp() {
   });
 
   app.use("/examples", exampleRoutes);
+  app.use("/auth", authRoutes);
 
   return app;
 }
